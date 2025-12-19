@@ -1,0 +1,14 @@
+.button {
+  padding: 14px 32px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.button--yellow {
+  background-color: var(--color-yellow);
+}
+
+.button--white {
+  background-color: var(--color-white);
+}

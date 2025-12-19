@@ -1,0 +1,13 @@
+:root {
+  --color-dark: #1c1f2a;
+  --color-dark-2: #232536;
+  --color-yellow: #ffd050;
+  --color-purple: #592ea9;
+  --color-gray: #6d6e76;
+  --color-light: #f4f4f4;
+  --color-white: #ffffff;
+
+  --font-main: "Sen", sans-serif;
+
+  --container-width: 1280px;
+}
