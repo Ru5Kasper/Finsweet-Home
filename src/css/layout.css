@@ -135,7 +135,6 @@ section {
 }
 
 .posts__column--featured {
-  padding-left: 80px;
   width: 733px;
   height: 804px;
   flex-shrink: 0;
@@ -228,9 +227,10 @@ section {
 ===================== */
 
 .about {
-  width: 1280px;
-  height: 500px;
-  background-color: #f4f0f8;
+    width: 1280px;
+  height: 523px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .about__box {
@@ -247,6 +247,15 @@ section {
   width: 1061px;
   height: 23px;
   display: flex;
+  z-index: 2;
+}
+
+.about__bg {
+  position: absolute;
+  bottom: 0;
+  width: 1280px;
+  height: 500px;
+  background-color: #f4f0f8;
 }
 
 .about__stripe--yellow {
@@ -261,11 +270,14 @@ section {
 
 .about__content {
   display: flex;
+  position: relative;
+  z-index: 1;
 }
 
 .about__block--left {
   width: 515px;
   height: 308px;
+  margin-right: 61px;
   margin-left: 80px;
   margin-top: 96px;
   margin-bottom: 96px;
@@ -273,8 +285,8 @@ section {
 
 .about__block--right {
   width: 516px;
-  height: 249px;
-  margin-left: 108px;
+  height: 248px;
+  margin-right: 108px;
   margin-top: 96px;
   margin-bottom: 153px;
 }
@@ -311,35 +323,69 @@ section {
   padding: 128px 0;
 }
 
-.section-title--center {
-  text-align: center;
-  margin-bottom: 64px;
+.categories__container {
+  width: 1280px;
+  height: 324px;
+  margin: 0 auto;
 }
 
-.categories__grid {
+.section-title--center {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* Контейнер карточек */
+.categories__cards {
+  width: 1280px;
+  height: 228px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 296px);
   gap: 32px;
 }
 
+/* Карточка */
 .category-card {
-  border: 1px solid #e5e5e5;
+  position: relative;
+  width: 296px;
+  height: 228px;
   padding: 32px;
+  border: 1px solid #e5e5e5;
   transition: background-color 0.2s ease;
 }
 
 .category-card:hover {
-  background-color: #ffd050;
+  background-color: var(--color-yellow);
 }
 
-.category-card--active {
-  background-color: #ffd050;
+/* Иконка */
+.category-card__icon {
+  width: 48px;
+  height: 48px;
+  background-color: #FBF6EA;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
+.category-card__icon img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Текст */
 .category-card__title {
   font-size: 28px;
   margin-bottom: 8px;
+  color: var(--color-dark);
 }
+
+.category-card__text {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
 
 /* =====================
    STORY
@@ -350,48 +396,86 @@ section {
 }
 
 .story__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
+  position: relative;
+  width: 1280px;
+  height: 705px;
+  margin: 0 auto;
 }
 
 .story__image {
+  width: 949px;
+  height: 705px;
   background: url("../../images/story.jpg") center / cover no-repeat;
-  height: 480px;
+}
+
+.story__content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 706px;
+  height: 584px;
+  background-color: var(--color-white);
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .story__label {
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 14px;
-  color: #592ea9;
+  font-weight: 600;
+  color: var(--color-purple);
+  margin-bottom: 24px;
 }
 
 .story__title {
-  font-size: 40px;
-  margin: 24px 0;
+  margin-bottom: 16px;
+  color: var(--color-dark);
 }
+
+.story__text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  color: var(--color-gray);
+}
+
 
 /* =====================
    AUTHORS
 ===================== */
 
 .authors {
+  width: 1280px;
+  height: 420px;
+  margin: 0 auto;
   padding: 128px 0;
 }
 
 .authors__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 296px);
   gap: 32px;
+  justify-content: center;
 }
 
 .author-card {
-  background-color: #f4f0f8;
-  padding: 40px;
+  width: 296px;
+  height: 324px;
+  background-color: var(--color-light);
+  padding: 40px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.author-card:hover {
+  background-color: #FBF6EA;
 }
 
 .author-card:hover {
@@ -401,20 +485,40 @@ section {
 .author-card__avatar {
   width: 128px;
   height: 128px;
-  margin: 0 auto 16px;
-  background: #ddd;
   border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
 }
 
 .author-card__name {
   font-size: 20px;
+  font-weight: 700;
   margin-bottom: 4px;
+  color: var(--color-dark);
 }
 
 .author-card__role {
   font-size: 14px;
-  color: #6d6e76;
+  color: var(--color-gray);
+  margin-bottom: 24px;
 }
+
+.authors .section-title {
+  margin-bottom: 48px;
+}
+
+.author-card__socials {
+  display: flex;
+  gap: 16px;
+}
+
+.author-card__socials img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+
 /* =====================
    TESTIMONIALS
 ===================== */

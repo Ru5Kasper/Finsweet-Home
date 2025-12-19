@@ -93,5 +93,9 @@
   align-self: flex-start;
 }
 
-
+.story__content .button {
+  margin-top: auto;
+  margin-bottom: auto;
+  align-self: flex-start;
+}
 
