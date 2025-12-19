@@ -3,6 +3,7 @@
   font-weight: 700;
   border: none;
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .button--yellow {
@@ -12,3 +13,40 @@
 .button--white {
   background-color: var(--color-white);
 }
+
+.button--yellow:hover {
+  background-color: #e6bb45;
+}
+
+.button--white:hover {
+  background-color: #f4f4f4;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.post-card__meta {
+  font-size: 14px;
+  color: #6d6e76;
+  margin-bottom: 8px;
+}
+
+.post-card__title {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.about__link {
+  color: #592ea9;
+  font-weight: 700;
+}
+
+.category-card,
+.author-card,
+.testimonial-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+
