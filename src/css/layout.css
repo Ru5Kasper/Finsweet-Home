@@ -77,7 +77,8 @@ section {
 }
 
 .hero__content {
-  max-width: 800px;
+  max-width: 900px;
+  margin-left: 80px;
 }
 
 .hero__tag {
@@ -85,24 +86,42 @@ section {
   font-size: 14px;
   letter-spacing: 3px;
   margin-bottom: 24px;
+  color: #ffffff;
 }
 
 .hero__title {
   font-size: 56px;
   line-height: 1.2;
+  font-weight: 700;
   margin: 24px 0;
 }
 
 .hero__meta {
   margin-bottom: 16px;
   font-size: 14px;
-  opacity: 0.8;
+  color: #ffffff;
+  opacity: 0.9;
 }
+
+.hero__author {
+  color: var(--color-yellow);
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.hero__author:hover {
+  color: var(--color-purple);
+}
+
 
 .hero__text {
   max-width: 600px;
   margin-bottom: 32px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e5e5e5;
 }
+
 
 /* =====================
    POSTS
@@ -115,6 +134,17 @@ section {
   padding: 128px 0;
 }
 
+.posts__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.posts__featured {
+  border: 1px solid rgba(109, 110, 118, 0.2);
+  padding: 32px;
+}
+
 .posts__featured img {
   margin: 24px 0;
 }
@@ -125,25 +155,19 @@ section {
   gap: 32px;
 }
 
-.posts__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .post-card {
   padding-bottom: 24px;
-  border-bottom: 1px solid #e5e5e5;
 }
 
 .posts__featured h3 {
   font-size: 28px;
+  line-height: 1.4;
   margin-bottom: 16px;
 }
 
-
 .posts__featured p {
   margin-bottom: 24px;
+  color: var(--color-gray);
 }
 
 .posts__view {
@@ -151,6 +175,23 @@ section {
   font-weight: 700;
   color: #592ea9;
 }
+
+.post-meta {
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: var(--color-dark);
+}
+
+.post-author {
+  color: var(--color-purple);
+  font-weight: 700;
+  position: relative;
+}
+
+.post-author:hover {
+  color: var(--color-yellow);
+}
+
 
 /* =====================
    ABOUT

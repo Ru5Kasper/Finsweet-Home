@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="src/css/normalize.css" />
   <link rel="stylesheet" href="src/css/variables.css" />
   <link rel="stylesheet" href="src/css/base.css" />
+  <link rel="stylesheet" href="src/css/fonts.css" />
   <link rel="stylesheet" href="src/css/layout.css" />
   <link rel="stylesheet" href="src/css/components.css" />
 </head>
@@ -45,8 +46,9 @@
   <div class="posts__featured">
     <h2 class="section-title">Featured Post</h2>
     <img src="images/Featured.jpg" alt="">
-    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-    <p>Duis aute irure dolor in reprehenderit in voluptate.</p>
+    <p class="post-meta">By <a href="#" class="post-author">John Doe</a> | May 23, 2022</p>
+    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</h3>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
     <a class="button button--yellow" href="#">Read More &gt;</a>
   </div>
 
@@ -57,9 +59,13 @@
     </div>
 
     <article class="post-card">
-      <span class="post-card__meta">By John Doe | Aug 23, 2022</span>
-      <h4 class="post-card__title">8 Figma design systems that you can download for free today.</h4>
-    </article>
+  <span class="post-card__meta">
+    By <a href="#" class="post-author">John Doe</a> | Aug 23, 2022
+  </span>
+  <h4 class="post-card__title">
+    8 Figma design systems that you can download for free today.
+  </h4>
+</article>
   </div>
 </section>
 
