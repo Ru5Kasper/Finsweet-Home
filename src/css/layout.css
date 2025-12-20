@@ -649,12 +649,23 @@ section {
   gap: 16px;
 }
 
-.testimonials__avatar {
+.testimonials__avatar-wrapper {
   width: 48px;
   height: 48px;
   border-radius: 50%;
+  overflow: hidden; /* Обрезаем всё, что выходит за круг */
+  position: relative;
+}
+
+.testimonials__avatar {
+  /* Заставляем изображение заполнять контейнер и больше */
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center top;
+  /* Увеличиваем масштаб изображения */
+  transform: scale(2.8);
+  /* Можно регулировать положение после увеличения */
+  object-position: -4px 7px; /* Смещаем изображение по горизонтали на 20% */;
 }
 
 
@@ -747,10 +758,6 @@ section {
   opacity: 0;
   transform: scale(0.8);
 }
-
-/*======================
-    JOIN
-===================== */
 
 /*======================
     JOIN
