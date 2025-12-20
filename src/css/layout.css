@@ -262,11 +262,7 @@ section {
 }
 
 .about__box {
-  max-width: 1280px;
   width: 100%;
-  height: auto;
-  min-height: 523px; /* Минимальная высота как в дизайне */
-  margin: 0 auto;
   position: relative;
   overflow: hidden; /* Чтобы полоска не выходила за границы */
 }
