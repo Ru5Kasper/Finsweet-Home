@@ -10,7 +10,7 @@ section {
   background-color: #232536;
   color: #ffffff;
   position: relative;
-  width: 100%;
+  max-width: 100%;
   height: 80px;
 }
 
@@ -121,32 +121,57 @@ section {
 
 .posts {
   display: flex;
-  grid-template-columns: auto auto;
   gap: 64px;
   padding: 128px 0;
   justify-content: center;
+  flex-wrap: wrap; /* Добавляем перенос на узких экранах */
 }
 
 .posts__wrapper {
-  width: 1282px;
-  height: 804px;
+  max-width: 1282px;
+  width: 100%; /* Гибкая основа */
+  height: auto; /* Убираем фикс. высоту */
   display: flex;
   gap: 32px;
+  /* Важно: Не используем flex-wrap здесь. Контейнеры должны быть в строке. */
+  /* Вместо этого ограничиваем минимальную ширину и добавляем медиа-запрос */
+  min-width: 0; /* Разрешаем сжатие */
 }
 
 .posts__column--featured {
-  width: 733px;
-  height: 804px;
-  flex-shrink: 0;
-
-  display: flex;
-  flex-direction: column;
+  /* Дизайн: 733px */
+  width: 733px; /* Фиксируем базовую ширину как в макете */
+  max-width: 100%; /* Но не больше доступного места */
+  flex-shrink: 0; /* Запрещаем сжиматься */
+  height: auto;
 }
 
+.posts__column--list {
+  /* Дизайн: 517px */
+  width: 517px; /* Фиксируем базовую ширину */
+  max-width: 100%; /* Но не больше доступного места */
+  flex-shrink: 0; /* Запрещаем сжиматься */
+  height: auto; /* Убираем фиксированную высоту */
+  padding-right: 78px;
+}
+
+/* Адаптив для Posts: складываем колонки только когда экран узкий */
+@media (max-width: 1300px) {
+  .posts__wrapper {
+    flex-wrap: wrap; /* Теперь разрешаем перенос */
+    justify-content: center;
+  }
+  .posts__column--featured,
+  .posts__column--list {
+    width: 90%; /* На узких экранах занимают почти всю ширину */
+    max-width: 733px; /* Но не шире оригинала */
+    padding-right: 0;
+  }
+}
 
 .posts__column--list {
   padding-right: 78px;
-  width: 517px;
+  max-width: 517px;
   height: 804px;
   flex-shrink: 0;
 }
@@ -227,17 +252,23 @@ section {
 ===================== */
 
 .about {
-    width: 1280px;
-  height: 523px;
+  max-width: 1280px;
+  width: 100%; /* Гибкая основа */
+  height: auto;
   margin: 0 auto;
   position: relative;
+  /* Заменяем padding на управление через внутренние блоки */
+  padding: 0;
 }
 
 .about__box {
-  width: 1280px;
-  height: 523px;
+  max-width: 1280px;
+  width: 100%;
+  height: auto;
+  min-height: 523px; /* Минимальная высота как в дизайне */
   margin: 0 auto;
   position: relative;
+  overflow: hidden; /* Чтобы полоска не выходила за границы */
 }
 
 .about__stripe {
@@ -245,6 +276,7 @@ section {
   top: 0;
   right: 0;
   width: 1061px;
+  max-width: 83%; /* Гибкое ограничение: 1061/1280 ≈ 83% */
   height: 23px;
   display: flex;
   z-index: 2;
@@ -253,18 +285,22 @@ section {
 .about__bg {
   position: absolute;
   bottom: 0;
-  width: 1280px;
+  width: 100%; /* Растягиваем на всю ширину контейнера */
   height: 500px;
+  min-height: 500px;
   background-color: #f4f0f8;
+  z-index: 0;
 }
 
 .about__stripe--yellow {
   width: 843px;
+  max-width: 79.5%; /* 843/1061 ≈ 79.5% */
   background-color: var(--color-yellow);
 }
 
 .about__stripe--purple {
-  width: 218px; /* 1061 - 843 */
+  width: 218px;
+  max-width: 20.5%; /* 218/1061 ≈ 20.5% */
   background-color: var(--color-purple);
 }
 
@@ -272,23 +308,37 @@ section {
   display: flex;
   position: relative;
   z-index: 1;
+  padding: 0; /* Убираем общий padding */
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .about__block--left {
   width: 515px;
-  height: 308px;
-  margin-right: 61px;
-  margin-left: 80px;
-  margin-top: 96px;
-  margin-bottom: 96px;
+  max-width: 40%;
+  height: auto;
+  margin: 96px 0 96px 80px; /* Сверху 96, снизу 96, слева 80 */
 }
 
 .about__block--right {
   width: 516px;
-  height: 248px;
-  margin-right: 108px;
-  margin-top: 96px;
-  margin-bottom: 153px;
+  max-width: 40%;
+  height: auto;
+  margin: 98px 108px 153px 0; /* Сверху 98, справа 108, снизу 153 */
+}
+
+/* Адаптив для About с сохранением логики отступов */
+@media (max-width: 1100px) {
+  .about__content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .about__block--left,
+  .about__block--right {
+    max-width: 516px;
+    width: 100%;
+    margin: 40px 20px; /* Унифицируем отступы на мобильных */
+  }
 }
 
 .about__inner {
@@ -320,12 +370,13 @@ section {
 ===================== */
 
 .categories {
-  padding-top: 128px;
+  padding: 128px 20px 0; /* Добавляем боковые отступы */
 }
 
 .categories__container {
-  width: 1280px;
-  height: 324px;
+  max-width: 1280px;
+  width: 100%;
+  height: auto; /* Исправлено */
   margin: 0 auto;
 }
 
@@ -336,21 +387,25 @@ section {
 
 /* Контейнер карточек */
 .categories__cards {
-  width: 1280px;
-  height: 228px;
+  max-width: 1280px;
+  width: 100%;
+  height: auto; /* Исправлено */
   display: grid;
-  grid-template-columns: repeat(4, 296px);
+ /* Было: repeat(auto-fit, minmax(250px, 1fr)) */
+  grid-template-columns: repeat(4, 296px); /* Восстанавливаем дизайн */
+  justify-content: center; /* Центрируем сетку */
   gap: 32px;
 }
 
 /* Карточка */
 .category-card {
   position: relative;
-  width: 296px;
-  height: 228px;
-  padding: 32px;
+  width: 100%;
+  height: auto;
+  min-height: 228px;
+  padding: 32px; /* Теперь padding: 32px со всех сторон */
   border: 1px solid #e5e5e5;
-  transition: background-color 0.2s ease;
+  box-sizing: border-box; /* Важно! padding не увеличивает размер */
 }
 
 .category-card:hover {
@@ -367,10 +422,11 @@ section {
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
+  /* Отступы 32px уже заданы через padding родителя */
 }
 
 .category-card__icon img {
-  width: 24px;
+  max-width: 24px;
   height: 24px;
 }
 
@@ -392,19 +448,23 @@ section {
 ===================== */
 
 .story {
-  padding-top: 128px;
+  padding: 128px 20px 0; /* Добавляем боковые отступы */
 }
 
 .story__inner {
-  position: relative;
-  width: 1280px;
-  height: 705px;
+  max-width: 1280px;
+  width: 100%;
+  height: auto;
+  min-height: 705px;
   margin: 0 auto;
+  position: relative;
 }
 
 .story__image {
   width: 949px;
+  max-width: 74%; /* 949/1280 ≈ 74% */
   height: 705px;
+  max-height: 70vh;
   background: url("../../images/story.jpg") center / cover no-repeat;
 }
 
@@ -413,12 +473,31 @@ section {
   right: 0;
   bottom: 0;
   width: 706px;
-  height: 584px;
+  max-width: 55%; /* 706/1280 ≈ 55% */
+  height: auto;
+  min-height: 584px;
   background-color: var(--color-white);
   padding: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1100px) {
+  .story__inner {
+    display: flex;
+    flex-direction: column;
+  }
+  .story__image {
+    width: 100%;
+    max-width: 100%;
+    height: 50vh;
+  }
+  .story__content {
+    position: relative;
+    width: 90%;
+    max-width: 100%;
+    margin: -100px auto 0;
+    padding: 40px;
+  }
 }
 
 .story__label {
@@ -448,30 +527,53 @@ section {
 ===================== */
 
 .authors {
-  width: 1280px;
-  height: 420px;
-  margin: 0 auto;
-  margin-top: 128px;
+  max-width: 1280px;
+  width: 100%;
+  height: auto; /* Исправлено */
+  margin: 128px auto 0;
+  padding: 0 20px; /* Добавляем боковые отступы */
 }
 
 .authors__grid {
   display: grid;
-  grid-template-columns: repeat(4, 296px);
+  /* Было: repeat(auto-fit, minmax(250px, 1fr)) */
+  grid-template-columns: repeat(4, 296px); /* Восстанавливаем дизайн */
+  justify-content: center; /* Центрируем сетку */
   gap: 32px;
-  justify-content: center;
+}
+
+/* Адаптив для сеток */
+@media (max-width: 1300px) {
+  .categories__cards,
+  .authors__grid {
+    grid-template-columns: repeat(2, 296px);
+  }
+}
+
+@media (max-width: 768px) {
+  .categories__cards,
+  .authors__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
 }
 
 .author-card {
-  width: 296px;
-  height: 324px;
+  width: 100%;
+  max-width: 296px; /* Фиксируем максимальную ширину */
+  height: auto;
+  min-height: 324px;
   background-color: var(--color-light);
-  padding: 40px 28px;
+  padding: 40px 28px; /* Сверху/снизу 40px, слева/справа 28px */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
   cursor: pointer;
+  margin: 0 auto; /* Центрируем карточку внутри ячейки сетки */
 }
 
 .author-card:hover {
@@ -488,13 +590,13 @@ section {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 16px;
+  display: block;
 }
 
-.author-card__name {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 4px;
-  color: var(--color-dark);
+.author-card__name,
+.author-card__role {
+  width: 100%; /* Занимают всю ширину для центрирования текста */
+  text-align: center;
 }
 
 .author-card__role {
@@ -513,7 +615,7 @@ section {
 }
 
 .author-card__socials img {
-  width: 16px;
+  max-width: 16px;
   height: 16px;
   cursor: pointer;
 }
@@ -532,7 +634,7 @@ section {
 }
 
 .featured__label-box {
-  width: 135px;
+  max-width: 135px;
   height: 52px;
 
   display: flex;
@@ -572,28 +674,35 @@ section {
 ===================== */
 
 .testimonials {
-  width: 1280px;
+  max-width: 1280px;
+  width: 100%; /* Заменяем 90% на 100% */
   height: 464px;
+  min-height: 464px; /* Фиксируем высоту как в дизайне */
   background-color: var(--color-light-yellow);
   margin: 0 auto 128px;
+  padding: 0; /* Убираем padding, используем позиционирование */
+  position: relative;
+  overflow: hidden; /* Чтобы ничего не вылезало */
 }
 
 .testimonials__inner {
   position: relative;
   width: 100%;
   height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-
+/* Восстанавливаем оригинальное позиционирование */
 .testimonials__intro {
   position: absolute;
   top: 92px;
   left: 112px;
-
   width: 349px;
-  height: 200px;
+  max-width: calc(349/1280 * 100%); /* Относительная ширина */
+  height: auto;
+  margin: 0;
 }
-
 .testimonials__label {
   display: block;
   text-transform: uppercase;
@@ -617,7 +726,10 @@ section {
   left: 541px;
   width: 1px;
   height: 310px;
+  max-height: 67%; /* 310/464 ≈ 67% */
   background-color: #d6d6d6;
+  /* Скрываем на очень узких экранах */
+  display: block;
 }
 
 .testimonial-card {
@@ -629,8 +741,9 @@ section {
   position: absolute;
   top: 80px;
   right: 174px;
-
   width: 480px;
+  max-width: calc(480/1280 * 100%); /* Относительная ширина */
+  height: auto;
 }
 
 .testimonials__quote {
@@ -642,30 +755,28 @@ section {
 
 
 .testimonials__author {
-  width: 257px;
+  max-width: 257px;
   height: 60px;
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
+/* Исправление аватарки (из нашего прошлого обсуждения) */
 .testimonials__avatar-wrapper {
   width: 48px;
+  min-width: 48px; /* Фиксируем минимальный размер */
   height: 48px;
   border-radius: 50%;
-  overflow: hidden; /* Обрезаем всё, что выходит за круг */
-  position: relative;
+  overflow: hidden;
 }
 
 .testimonials__avatar {
-  /* Заставляем изображение заполнять контейнер и больше */
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Увеличиваем масштаб изображения */
-  transform: scale(2.8);
-  /* Можно регулировать положение после увеличения */
-  object-position: -4px 7px; /* Смещаем изображение по горизонтали на 20% */;
+  /* Убираем transform: scale - он вызывает проблемы при зуме */
+  object-position: center 30%; /* Настраиваем кадрирование */
 }
 
 
@@ -683,10 +794,33 @@ section {
   position: absolute;
   right: 112px;
   bottom: 87px;
-
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+/* Адаптив для Testimonials */
+@media (max-width: 1200px) {
+  .testimonials {
+    height: auto;
+    min-height: 464px;
+    padding: 80px 40px;
+  }
+  .testimonials__intro,
+  .testimonials__divider,
+  .testimonials__content,
+  .testimonials__controls {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 40px 0;
+  }
+  .testimonials__divider {
+    display: none;
+  }
+  .testimonials__quote {
+    margin-bottom: 40px; /* Уменьшаем отступ */
+  }
 }
 
 .testimonial-btn {
@@ -764,23 +898,24 @@ section {
 ===================== */
 
 .join {
-  width: 414px;
-  height: 256px;
+  max-width: 414px;
+  width: 90%; /* Делаем адаптивным */
+  height: auto;
+  min-height: 256px;
   margin: 0 auto 128px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .join__inner {
   width: 100%;
-  height: 100%;
-
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   text-align: center;
 }
-
 .join__title {
   margin-bottom: 16px;
   letter-spacing: -2px;
@@ -793,113 +928,231 @@ section {
 
 
 /* =====================
-   FOOTER
+   FOOTER (Исправлено с сохранением дизайна и добавлением гибкости)
 ===================== */
 
 .footer {
   background-color: #232536;
-  padding: 59px 80px 56px;
+  padding: 59px 80px 56px; /* Точные отступы: 59 сверху, 80 по бокам, 56 снизу */
+  position: relative;
+  overflow: hidden; /* Чтобы ничего не вылезало при увеличении */
 }
 
 .footer__inner {
   position: relative;
-
   width: 1280px;
+  max-width: 100%; /* Ключевое: не больше 1280px, но адаптивно */
   height: 445px;
-
+  min-height: 445px; /* Фиксируем высоту как в дизайне */
   margin: 0 auto;
 }
 
-.footer__top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+/* Логотип */
 .footer__logo {
   position: absolute;
   top: 2px;
   left: 3px;
-
   height: 28px;
+  font-size: 28px; /* Для текстового лого */
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  z-index: 3;
 }
 
+/* Навигация */
 .footer__nav {
   position: absolute;
   top: 0;
   right: 0;
-
   display: flex;
   gap: 24px;
+  z-index: 3;
+  flex-wrap: wrap; /* Навигация переносится при увеличении */
+  max-width: 80%; /* Ограничиваем ширину */
 }
 
 .footer__nav a {
   color: #ffffff;
   opacity: 0.8;
+  font-size: 16px;
+  text-decoration: none;
+  white-space: nowrap; /* Ссылки не переносятся */
 }
 
 .footer__nav a:hover {
   opacity: 1;
 }
 
+/* Блок подписки */
 .footer__subscribe {
   position: absolute;
   top: 96px;
   left: 0;
-
-  width: 1280px;
+  width: 100%;
+  max-width: 1280px;
   height: 256px;
+  min-height: 256px;
   background-color: #2e3040;
-
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+  box-sizing: border-box;
+  z-index: 2;
 }
 
 .footer__subscribe-title {
-  margin-left: 64px;
-  margin-right: 64px;
+  width: 562px;
+  max-width: 44%; /* 562/1280 ≈ 44% */
   letter-spacing: -2px;
   color: var(--color-white);
-  max-width: 562px;
+  font-size: 36px; /* Соответствует h2 */
+  line-height: 1.2;
+  margin: 0;
 }
 
+/* Форма подписки */
 .footer__form {
   display: flex;
   align-items: center;
   gap: 24px;
+  width: auto;
+  flex-shrink: 0;
 }
 
 .footer__form input {
   width: 323px;
+  max-width: 40vw; /* Гибкая максимальная ширина */
+  min-width: 200px; /* Минимальная ширина для читаемости */
   height: 56px;
-
   background: transparent;
   border: 1px solid var(--color-dark-gray);
   color: var(--color-dark-gray);
-
   padding: 0 16px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.footer__form button {
+  height: 56px;
+  padding: 0 32px;
+  background-color: var(--color-yellow);
+  color: var(--color-dark);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.footer__form button:hover {
+  background-color: #ffd050;
+}
+
+/* Контакты и соцсети */
+.footer__contacts {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #d6d6d6;
+  font-size: 16px;
+  line-height: 1.5;
+  z-index: 3;
 }
 
 .footer__socials {
   position: absolute;
   right: 0;
-  bottom: 28px;
-  filter: invert(0.3);
-
+  bottom: 28px; /* Отступ 28px от нижнего края контейнера */
   display: flex;
   gap: 24px;
+  filter: invert(0.3);
+  z-index: 3;
 }
 
-.footer__contacts {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-
-  text-align: left;
-
-  color: #d6d6d6;
-  font-size: 16px;
+.footer__socials img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
+
+.footer__socials img:hover {
+  opacity: 0.8;
+}
+
+/* =====================
+   АДАПТИВ ДЛЯ ФУТЕРА
+===================== */
+
+/* Для экранов уже 1280px */
+@media (max-width: 1300px) {
+  .footer {
+    padding: 59px 40px 56px; /* Уменьшаем боковые отступы */
+  }
+  
+  .footer__inner {
+    width: 100%;
+    height: auto;
+    min-height: 445px;
+  }
+  
+  .footer__subscribe {
+    position: relative;
+    top: 60px;
+    margin-bottom: 120px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+    height: auto;
+    min-height: 256px;
+  }
+  
+  .footer__subscribe-title {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 32px;
+  }
+  
+  .footer__form {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .footer__form input {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .footer__logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 32px;
+  }
+  
+  .footer__nav {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 60px;
+    justify-content: flex-start;
+  }
+  
+  .footer__contacts {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .footer__socials {
+    position: relative;
+    bottom: 0;
+    margin-top: 20px;
+  }
+}
+
 
 /* =====================
    MEDIA QUERIES
@@ -986,11 +1239,93 @@ section {
 
   .footer__form {
     flex-direction: column;
-    width: 100%;
+    max-width: 100%;
   }
 
   .footer__form input {
+    max-width: 100%;
+  }
+}
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+  }
+  
+  .footer__inner {
+    min-height: auto;
+    height: auto;
+  }
+  
+  .footer__subscribe {
+    padding: 30px 20px;
+    top: 40px;
+    margin-bottom: 80px;
+  }
+  
+  .footer__subscribe-title {
+    font-size: 28px;
+    text-align: center;
+  }
+  
+  .footer__form {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .footer__form input,
+  .footer__form button {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .footer__nav {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .footer__nav a {
+    font-size: 14px;
+  }
+  
+  .footer__contacts {
+    text-align: center;
+    width: 100%;
+  }
+  
+  .footer__socials {
+    justify-content: center;
     width: 100%;
   }
 }
 
+/* Для очень большого зума (250% - примерно 500px ширины экрана) */
+@media (max-width: 500px) {
+  .footer__subscribe-title {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+  
+  .footer__contacts {
+    font-size: 14px;
+  }
+  
+  .footer__nav {
+    gap: 12px;
+  }
+  
+  .footer__nav a {
+    font-size: 13px;
+  }
+  
+  .footer__form input {
+    font-size: 14px;
+    height: 48px;
+  }
+  
+  .footer__form button {
+    height: 48px;
+    font-size: 14px;
+  }
+}
