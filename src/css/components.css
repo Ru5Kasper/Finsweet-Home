@@ -1,5 +1,5 @@
 .button {
-  padding: 14px 32px;
+  padding: 16px 48px;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -98,4 +98,5 @@
   margin-bottom: auto;
   align-self: flex-start;
 }
+
 

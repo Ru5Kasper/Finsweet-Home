@@ -29,9 +29,9 @@
 <section class="hero">
   <div class="container hero__content">
     <span class="hero__tag">Posted on <strong>Startup</strong></span>
-    <h1 class="text-display hero__title">
+    <dl class="hero__title">
       Step-by-step guide to choosing great font pairs
-    </h1>
+    </dl>
     <p class="hero__meta">
       By <span class="hero__author">James West</span> | May 23, 2022
     </p>
@@ -251,19 +251,33 @@
 
 <section class="featured">
   <div class="container featured__inner">
-    <span class="featured__label">We are</span>
+    <div class="featured__label-box">
+      <p class="featured__label-small">We are</p>
+      <h4 class="featured__label-large">Featured in</h4>
+    </div>
     <div class="featured__logos">
-      <div class="featured__logo"></div>
-      <div class="featured__logo"></div>
-      <div class="featured__logo"></div>
-      <div class="featured__logo"></div>
-      <div class="featured__logo"></div>
+      <div class="featured__logo">
+        <img src="images/Logo/Logo 1.svg">
+      </div>
+      <div class="featured__logo">
+        <img src="images/Logo/Logo 2.svg">
+      </div>
+      <div class="featured__logo">
+        <img src="images/Logo/Logo 3.svg">
+      </div>
+      <div class="featured__logo">
+        <img src="images/Logo/Logo 4.svg">
+      </div>
+      <div class="featured__logo">
+        <img src="images/Logo/Logo 5.svg">
+      </div>
     </div>
   </div>
 </section>
 
 <section class="testimonials">
-  <div class="container testimonials__inner">
+  <div class="testimonials__inner">
+
     <div class="testimonials__intro">
       <span class="testimonials__label">Testimonials</span>
       <h2 class="testimonials__title">
@@ -274,24 +288,65 @@
       </p>
     </div>
 
-    <div class="testimonial-card">
-      <p class="testimonial-card__quote">
-        “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.”
-      </p>
-      <div class="testimonial-card__author">
-        <div class="testimonial-card__avatar"></div>
+    <div class="testimonials__divider"></div>
+
+    <div class="testimonials__content">
+      <h4 class="testimonials__quote">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </h4>
+
+      <div class="testimonials__author">
+        <img
+          class="testimonials__avatar"
+          src="images/Jonathan Vallem.jpg"
+          alt="Jonathan Vallem"
+        >
         <div>
-          <p class="testimonial-card__name">Jonathan Doe</p>
-          <span class="testimonial-card__city">New York, USA</span>
+          <div class="testimonials__name">Jonathan Vallem</div>
+          <div class="testimonials__city">New York, USA</div>
         </div>
       </div>
     </div>
+
+    <div class="testimonials__controls">
+      <button class="testimonial-btn testimonial-btn--prev">
+        <span class="arrow-wrapper">
+          <img class="arrow arrow--black" src="icons/arrows/Arrow black.svg" alt="">
+          <img class="arrow arrow--white" src="icons/arrows/Arrow white.svg" alt="">
+        </span>
+      </button>
+
+      <button class="testimonial-btn testimonial-btn--next">
+        <span class="arrow-wrapper">
+          <img class="arrow arrow--black" src="icons/arrows/Arrow black.svg" alt="">
+          <img class="arrow arrow--white" src="icons/arrows/Arrow white.svg" alt="">
+        </span>
+      </button>
+
+
+    </div>
+
   </div>
 </section>
 
+<section class="join">
+  <div class="join__inner">
+    <h2 class="join__title">
+      Join our team to be a part of our story
+    </h2>
+    <p class="join__text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+    </p>
+    <a class="button button--yellow" href="#">Join Now</a>
+  </div>
+</section>
+
+
 <footer class="footer">
-  <div class="container footer__top">
-    <div class="footer__logo">{Finsweet</div>
+  <div class="footer__inner">
+
+    <img src="icons/Feensweet.svg" alt="Finsweet" class="footer__logo">
+
     <nav class="footer__nav">
       <a href="#">Home</a>
       <a href="#">Blog</a>
@@ -299,16 +354,33 @@
       <a href="#">Contact us</a>
       <a href="#">Privacy Policy</a>
     </nav>
-  </div>
 
-  <div class="footer__subscribe">
-    <h3>Subscribe to our newsletter to get latest updates and news</h3>
-    <div class="footer__form">
-      <input type="email" placeholder="Enter Your Email">
-      <button class="button button--yellow">Subscribe</button>
+    <div class="footer__subscribe">
+      <h2 class="footer__subscribe-title">
+        Subscribe to our newsletter to get latest updates and news
+      </h2>
+
+      <div class="footer__form">
+        <input type="email" placeholder="Enter Your Email">
+        <button class="button button--yellow">Subscribe</button>
+      </div>
     </div>
+
+    <div class="footer__socials">
+      <img src="icons/facebook.svg" alt="">
+      <img src="icons/twitter.svg" alt="">
+      <img src="icons/instagram.svg" alt="">
+      <img src="icons/linkedin.svg" alt="">
+    </div>
+
+    <div class="footer__contacts">
+      <p>Finstreet 118 2561 Fintown</p>
+      <p>Hello@finsweet.com 020 7993 2905</p>
+    </div>
+
   </div>
 </footer>
+
 
 <script src="src/main.js"></script>
 </body>
