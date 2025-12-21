@@ -99,4 +99,227 @@
   align-self: flex-start;
 }
 
+/* =====================
+   THEME TOGGLE
+===================== */
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 30px;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
 
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.theme-toggle__circle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle__icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.theme-toggle__icon--sun {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+.theme-toggle__icon--moon {
+  opacity: 0;
+  transform: translateY(20px) rotate(90deg);
+}
+
+/* =====================
+   DARK THEME STYLES
+===================== */
+[data-theme="dark"] body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.5s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .header {
+  background-color: var(--color-dark-2);
+}
+
+[data-theme="dark"] .theme-toggle__circle {
+  background-color: #ffd050;
+  transform: rotate(180deg);
+}
+
+[data-theme="dark"] .theme-toggle__icon--sun {
+  opacity: 0;
+  transform: translateY(-20px) rotate(0deg);
+}
+
+[data-theme="dark"] .theme-toggle__icon--moon {
+  opacity: 1;
+  transform: translateY(0) rotate(80deg);
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("../../images/hero.jpg") center / cover no-repeat;
+}
+
+[data-theme="dark"] .posts__featured,
+[data-theme="dark"] .post-card,
+[data-theme="dark"] .category-card,
+[data-theme="dark"] .author-card {
+  background-color: var(--color-card-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .category-card.category-card:hover {
+  background-color: #ffd05097; /* Полупрозрачный желтый */
+}
+
+[data-theme="dark"] .category-card__icon{
+  background-color: var(--color-soft);
+}
+
+[data-theme="dark"] .post-card:hover {
+  background-color: rgba(255, 208, 80, 0.1);
+}
+
+[data-theme="dark"] .about__bg {
+  background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .story__content {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .testimonials {
+  background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .footer {
+  background-color: #1a1a1a;
+}
+
+[data-theme="dark"] .footer__subscribe {
+  background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .footer__form input {
+  border-color: var(--color-gray);
+  color: var(--color-gray);
+}
+
+[data-theme="dark"] .footer__nav a,
+[data-theme="dark"] .footer__subscribe-title,
+[data-theme="dark"] .footer__contacts,
+[data-theme="dark"] .footer__form input,
+[data-theme="dark"] .footer__form input::placeholder {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .footer__form .button--yellow {
+  background-color: #ffd050;
+  color: #000000;
+}
+
+[data-theme="dark"] .footer__form .button--yellow:hover {
+  background-color: #EDC14A;
+}
+
+
+[data-theme="dark"] .testimonials__text,
+[data-theme="dark"] .testimonials__quote,
+[data-theme="dark"] p,
+[data-theme="dark"] .post-card__title,
+[data-theme="dark"] .category-card__text,
+[data-theme="dark"] .author-card__role,
+[data-theme="dark"] .footer__contacts {
+  color: var(--color-gray);
+}
+
+[data-theme="dark"] .testimonial-card {
+  background-color: #2a2a2a; /* Темнее для контраста с белым текстом */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .testimonials__name,
+[data-theme="dark"] .testimonials__city{
+  color: #ffffff;
+}
+
+[data-theme="dark"] .category-card:hover {
+  background-color: var(--color-yellow);
+}
+
+[data-theme="dark"] .author-card:hover {
+  background-color: #3a3a3a;
+}
+
+[data-theme="dark"] .featured__logos img {
+  filter: invert(0.8) brightness(1.2);
+}
+
+[data-theme="dark"] .footer__socials {
+  filter: invert(1);
+}
+
+[data-theme="dark"] .author-card__socials img {
+  filter: brightness(1.5) invert(1);
+}
+
+[data-theme="dark"] .author-card__socials img:hover {
+  filter: brightness(2) invert(1);
+}
+
+/* Улучшаем общую контрастность для темной темы */
+[data-theme="dark"] .header__link,
+[data-theme="dark"] .header .button--white,
+[data-theme="dark"] .footer__nav a {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .header__link:hover,
+[data-theme="dark"] .footer__nav a:hover {
+  opacity: 1;
+  color: var(--color-yellow);
+}
+
+[data-theme="dark"] .header .button--white {
+  background-color: var(--color-yellow);
+  color: #000000;
+}
+
+[data-theme="dark"] .header .button--white:hover {
+  background-color: #EDC14A;
+}
+
+/* Логотипы в блоке Featured для темной темы */
+[data-theme="dark"] .featured__logos img {
+  filter: invert(1) brightness(1.5); /* Делаем полностью белыми */
+}

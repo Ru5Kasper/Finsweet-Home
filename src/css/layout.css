@@ -453,14 +453,16 @@ section {
   min-height: 705px;
   margin: 0 auto;
   position: relative;
+  overflow: hidden; /* Добавляем чтобы карточка не выходила */
 }
 
 .story__image {
   width: 949px;
-  max-width: 74%; /* 949/1280 ≈ 74% */
+  max-width: 100%; /* Меняем 74% на 100% */
   height: 705px;
-  max-height: 70vh;
+  max-height: 100%;
   background: url("../../images/story.jpg") center / cover no-repeat;
+  position: relative;
 }
 
 .story__content {
@@ -468,15 +470,13 @@ section {
   right: 0;
   bottom: 0;
   width: 706px;
-  max-width: 55%; /* 706/1280 ≈ 55% */
+  max-width: 55%; /* Ограничиваем ширину */
   height: auto;
   min-height: 584px;
   background-color: var(--color-white);
   padding: 80px;
   box-sizing: border-box;
 }
-
-
 
 .story__label {
   text-transform: uppercase;
@@ -541,9 +541,6 @@ section {
 
 .author-card:hover {
   background-color: #FBF6EA;
-}
-
-.author-card:hover {
   transform: translateY(-4px);
 }
 
@@ -581,6 +578,11 @@ section {
   max-width: 16px;
   height: 16px;
   cursor: pointer;
+}
+
+.author-card__socials img:hover {
+  filter: brightness(1) grayscale(0);
+  opacity: 0.9;
 }
 
 /* =====================
