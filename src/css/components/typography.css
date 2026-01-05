@@ -1,0 +1,42 @@
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.section-title--center {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.about__link {
+  color: #592ea9;
+  font-weight: 700;
+}
+
+.text--small {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text--meta {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray);
+}
+
+.text--link {
+  font-weight: 500;
+  color: var(--color-purple);
+}
+
+.text--link:hover {
+  color: var(--color-yellow);
+}
+
+.post-author:hover {
+  color: var(--color-yellow);
+}
+
+.posts .post-author:hover {
+  color: var(--color-yellow);
+}

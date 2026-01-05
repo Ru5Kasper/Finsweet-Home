@@ -1,0 +1,134 @@
+.category-card,
+.author-card,
+.testimonial-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.post-card__meta {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--color-dark);
+}
+
+.post-card__title {
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--color-dark);
+}
+
+.post-card {
+  padding: 24px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.post-card:hover {
+  background-color: rgba(255, 208, 80, 0.2);
+}
+
+.category-card {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 228px;
+  padding: 32px;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+}
+
+.category-card:hover {
+  background-color: var(--color-yellow);
+}
+
+.category-card__icon {
+  width: 48px;
+  height: 48px;
+  background-color: #FBF6EA;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.category-card__icon img {
+  max-width: 24px;
+  height: 24px;
+}
+
+.category-card__title {
+  font-size: 28px;
+  margin-bottom: 8px;
+  color: var(--color-dark);
+}
+
+.category-card__text {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
+.author-card {
+  width: 100%;
+  max-width: 296px;
+  height: auto;
+  min-height: 324px;
+  background-color: var(--color-light);
+  padding: 40px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.author-card:hover {
+  background-color: #FBF6EA;
+  transform: translateY(-4px);
+}
+
+.author-card__avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.author-card__name,
+.author-card__role {
+  width: 100%;
+  text-align: center;
+}
+
+.author-card__role {
+  font-size: 14px;
+  color: var(--color-gray);
+  margin-bottom: 24px;
+}
+
+.author-card__socials {
+  display: flex;
+  gap: 16px;
+}
+
+.author-card__socials img {
+  max-width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.author-card__socials img:hover {
+  filter: brightness(1) grayscale(0);
+  opacity: 0.9;
+}
+
+.testimonial-card {
+  background-color: #ffffff;
+  padding: 48px;
+}

@@ -1,156 +1,3 @@
-.button {
-  padding: 16px 48px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.button--yellow {
-  background-color: #ffd050;
-  color: #000000;
-  transition: background-color 0.2s ease;
-}
-
-.button--white {
-  background-color: var(--color-white);
-}
-
-.button--yellow:hover {
-  background-color: #EDC14A;
-  color: #000000;
-}
-
-.button--white:hover {
-  background-color: #EDC14A;
-;
-}
-
-.section-title {
-  font-size: 36px;
-  font-weight: 700;
-}
-
-.post-card__meta {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: var(--color-dark);
-}
-
-.post-card__title {
-  font-size: 24px;
-  line-height: 1.4;
-  color: var(--color-dark);
-}
-
-.about__link {
-  color: #592ea9;
-  font-weight: 700;
-}
-
-.category-card,
-.author-card,
-.testimonial-card {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-}
-
-.text--small {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.text--meta {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-gray);
-}
-
-.text--link {
-  font-weight: 500;
-  color: var(--color-purple);
-}
-
-.text--link:hover {
-  color: var(--color-yellow);
-}
-
-.post-author:hover {
-  color: var(--color-yellow);
-}
-
-.posts .post-author:hover {
-  color: var(--color-yellow);
-}
-
-.posts__featured .posts__view {
-  margin-top: auto;
-}
-
-.posts__featured .button {
-  margin-top: auto;
-  margin-bottom: auto;
-  align-self: flex-start;
-}
-
-.story__content .button {
-  margin-top: auto;
-  margin-bottom: auto;
-  align-self: flex-start;
-}
-
-/* =====================
-   THEME TOGGLE
-===================== */
-.theme-toggle {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 0;
-  margin-left: 30px;
-  z-index: 100;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1);
-}
-
-.theme-toggle__circle {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.theme-toggle__icon {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-.theme-toggle__icon--sun {
-  opacity: 1;
-  transform: translateY(0) rotate(0deg);
-}
-
-.theme-toggle__icon--moon {
-  opacity: 0;
-  transform: translateY(20px) rotate(90deg);
-}
-
 /* =====================
    DARK THEME STYLES
 ===================== */
@@ -184,7 +31,7 @@
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)
     ),
-    url("../../images/hero.jpg") center / cover no-repeat;
+    url("../../../images/hero.jpg") center / cover no-repeat; /* Добавлена ../ */
 }
 
 [data-theme="dark"] .posts__featured,
@@ -197,7 +44,7 @@
 }
 
 [data-theme="dark"] .category-card.category-card:hover {
-  background-color: #ffd05097; /* Полупрозрачный желтый */
+  background-color: #ffd05097;
 }
 
 [data-theme="dark"] .category-card__icon{
@@ -251,7 +98,6 @@
   background-color: #EDC14A;
 }
 
-
 [data-theme="dark"] .testimonials__text,
 [data-theme="dark"] .testimonials__quote,
 [data-theme="dark"] p,
@@ -263,7 +109,7 @@
 }
 
 [data-theme="dark"] .testimonial-card {
-  background-color: #2a2a2a; /* Темнее для контраста с белым текстом */
+  background-color: #2a2a2a;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -296,7 +142,6 @@
   filter: brightness(2) invert(1);
 }
 
-/* Улучшаем общую контрастность для темной темы */
 [data-theme="dark"] .header__link,
 [data-theme="dark"] .header .button--white,
 [data-theme="dark"] .footer__nav a {
@@ -319,7 +164,6 @@
   background-color: #EDC14A;
 }
 
-/* Логотипы в блоке Featured для темной темы */
 [data-theme="dark"] .featured__logos img {
-  filter: invert(1) brightness(1.5); /* Делаем полностью белыми */
+  filter: invert(1) brightness(1.5);
 }

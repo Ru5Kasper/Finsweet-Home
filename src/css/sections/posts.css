@@ -1,0 +1,137 @@
+/* =====================
+   POSTS
+===================== */
+.posts {
+  display: flex;
+  gap: 64px;
+  margin: 128px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.posts__wrapper {
+  max-width: 1282px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  gap: 32px;
+  min-width: 0;
+}
+
+.posts__column--featured {
+  width: 733px;
+  max-width: 100%;
+  flex-shrink: 0;
+  height: auto;
+}
+
+.posts__column--list {
+  width: 517px;
+  max-width: 100%;
+  flex-shrink: 0;
+  height: auto;
+  padding-right: 78px;
+}
+
+.posts__title {
+  margin-bottom: 32px;
+}
+
+.posts__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.posts__featured {
+  border: 1px solid rgba(109, 110, 118, 0.2);
+  padding: 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.posts__featured img {
+  margin: 24px 0;
+}
+
+.posts__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.posts__featured h3 {
+  font-size: 28px;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.posts__featured p {
+  margin-bottom: 32px;
+  color: var(--color-gray);
+}
+
+.posts__view {
+  font-size: 14px;
+  font-weight: 700;
+  color: #592ea9;
+}
+
+.posts__featured .posts__view {
+  margin-top: auto;
+}
+
+.posts__featured .button {
+  margin-top: auto;
+  margin-bottom: auto;
+  align-self: flex-start;
+}
+
+.post-meta {
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: var(--color-dark);
+}
+
+.post-author {
+  color: var(--color-purple);
+  font-weight: 700;
+  position: relative;
+}
+
+/* Адаптив для Posts */
+@media (max-width: 1280px) {
+  .posts__wrapper {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .posts__column--featured,
+  .posts__column--list {
+    width: 100%;
+    height: auto;
+    padding: 0 16px;
+  }
+
+  .posts__header {
+    gap: 16px;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .posts__wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .posts__column--featured,
+  .posts__column--list {
+    width: 90%;
+    max-width: 733px;
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,31 @@
+/* =====================
+   ГЛАВНЫЙ ФАЙЛ ИМПОРТА
+===================== */
+
+/* Base */
+@import "base/normalize.css";
+@import "base/variables.css";
+@import "base/fonts.css";
+@import "base/base.css";
+
+/* Components */
+@import "components/button.css";
+@import "components/cards.css";
+@import "components/theme-toggle.css";
+@import "components/typography.css";
+
+/* Sections */
+@import "sections/header.css";
+@import "sections/hero.css";
+@import "sections/posts.css";
+@import "sections/about.css";
+@import "sections/categories.css";
+@import "sections/story.css";
+@import "sections/authors.css";
+@import "sections/featured.css";
+@import "sections/testimonials.css";
+@import "sections/join.css";
+@import "sections/footer.css";
+
+/* Themes */
+@import "themes/dark.css";

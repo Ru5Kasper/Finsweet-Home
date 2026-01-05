@@ -1,0 +1,42 @@
+/* =====================
+   AUTHORS
+===================== */
+.authors {
+  max-width: 1280px;
+  width: 100%;
+  height: auto;
+  margin: 128px auto 0;
+  padding: 0 20px;
+}
+
+.authors__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 296px);
+  justify-content: center;
+  gap: 32px;
+}
+
+.authors .section-title {
+  margin-bottom: 48px;
+}
+
+/* Адаптив для Authors */
+@media (max-width: 1300px) {
+  .authors__grid {
+    grid-template-columns: repeat(2, 296px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .authors__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .authors__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
