@@ -14,16 +14,23 @@ class ThemeSwitcher {
     // Вешаем обработчик на кнопку
     this.themeToggle.addEventListener('click', () => this.toggleTheme());
     
-    // Добавляем класс для анимаций после загрузки
-    setTimeout(() => {
-      document.body.classList.add('theme-transition-ready');
-    }, 100);
+    // Плавное появление кнопки
+    this.fadeInButton();
   }
   
   setTheme(theme) {
+    // Добавляем класс для плавного перехода
+    document.body.classList.add('theme-changing');
+    
+    // Устанавливаем новую тему
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     this.updateToggleIcon(theme);
+    
+    // Удаляем класс после завершения перехода
+    setTimeout(() => {
+      document.body.classList.remove('theme-changing');
+    }, 500);
   }
   
   toggleTheme() {
@@ -31,30 +38,46 @@ class ThemeSwitcher {
     this.currentTheme = newTheme;
     this.setTheme(newTheme);
     
-    // Анимация переключения
+    // Анимация переключения кнопки
     this.animateToggle();
   }
   
   updateToggleIcon(theme) {
-    const circle = document.querySelector('.theme-toggle__circle');
+    const sunIcon = document.querySelector('.theme-toggle__icon--sun');
+    const moonIcon = document.querySelector('.theme-toggle__icon--moon');
+    
+    // Анимация меняется через CSS, но можно добавить дополнительные эффекты
     if (theme === 'dark') {
-      circle.style.transform = 'rotate(180deg) scale(1.1)';
+      this.themeToggle.style.backgroundColor = '#232536';
     } else {
-      circle.style.transform = 'rotate(0deg) scale(1)';
+      this.themeToggle.style.backgroundColor = '#ffd050';
     }
   }
   
   animateToggle() {
-    const circle = document.querySelector('.theme-toggle__circle');
+    // Эффект "пульсации" кнопки
+    this.themeToggle.style.transform = 'scale(1.15) rotate(180deg)';
+    this.themeToggle.style.transition = 'transform 0.4s ease, background-color 0.5s ease';
     
-    // Добавляем класс для анимации
-    circle.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
-    
-    // Эффект "пульсации"
-    this.themeToggle.style.transform = 'scale(1.15)';
+    // Эффект "отскока"
     setTimeout(() => {
-      this.themeToggle.style.transform = 'scale(1)';
-    }, 150);
+      this.themeToggle.style.transform = 'scale(0.95) rotate(180deg)';
+    }, 200);
+    
+    setTimeout(() => {
+      this.themeToggle.style.transform = 'scale(1) rotate(0deg)';
+    }, 400);
+  }
+  
+  fadeInButton() {
+    // Плавное появление кнопки после загрузки
+    setTimeout(() => {
+      this.themeToggle.style.opacity = '0';
+      this.themeToggle.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        this.themeToggle.style.opacity = '1';
+      }, 100);
+    }, 500);
   }
 }
 

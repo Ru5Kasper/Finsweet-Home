@@ -11,13 +11,6 @@
 <header class="header">
   <div class="container header__inner">
     <div class="header__logo">{Finsweet</div>
-      <!-- Кнопка переключения темы -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-      <div class="theme-toggle__circle">
-        <img class="theme-toggle__icon theme-toggle__icon--sun" src="icons/Black-sun.svg" alt="Sun">
-        <img class="theme-toggle__icon theme-toggle__icon--moon" src="icons/White-moon.svg" alt="Moon">
-      </div>
-    </button>
     <nav class="header__nav">
       <a class="header__link" href="#">Home</a>
       <a class="header__link" href="#">Blog</a>
@@ -384,7 +377,11 @@
 
   </div>
 </footer>
-
+ <!-- Кнопка темы - упрощенная версия -->
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Switch theme">
+  <img class="theme-toggle__icon theme-toggle__icon--sun" src="icons/Black-sun.svg" alt="Sun">
+  <img class="theme-toggle__icon theme-toggle__icon--moon" src="icons/White-moon.svg" alt="Moon">
+</button>
 
 <script src="src/js/main.js"></script>
 </body>
