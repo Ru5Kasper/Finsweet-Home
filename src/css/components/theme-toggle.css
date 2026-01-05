@@ -29,11 +29,6 @@
   transform: scale(0.95);
 }
 
-/* Убираем лишний круг - иконки помещаем прямо в кнопку */
-.theme-toggle__circle {
-  display: none; /* Скрываем лишний круг */
-}
-
 .theme-toggle__icon {
   position: absolute;
   width: 28px;
